@@ -23,8 +23,8 @@ class IngredientUpdate(IngredientBase):
 class Ingredient(IngredientBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True
 
 class SandwichBase(BaseModel):
     name: str
@@ -44,5 +44,5 @@ class SandwichUpdate(SandwichBase):
 class Sandwich(SandwichBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True

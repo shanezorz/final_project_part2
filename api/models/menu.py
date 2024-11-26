@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from ..dependencies.database import Base
 
 class Sandwich(Base):
-    __tablename__ = "menu_items"
+    __tablename__ = "menu_items"  # Correct table name for Sandwich
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(255), nullable=False)
@@ -11,7 +11,7 @@ class Sandwich(Base):
     calories = Column(Integer)
 
     order_details = relationship("OrderDetail", back_populates="sandwich")
-    ingredients = relationship("Ingredient", secondary="sandwich_ingredients")
+    ingredients = relationship("Ingredient", secondary="sandwich_ingredients")  # Correct secondary table
 
 
 class Ingredient(Base):
@@ -25,7 +25,7 @@ class Ingredient(Base):
 class SandwichIngredient(Base):
     __tablename__ = "sandwich_ingredients"
 
-    sandwich_id = Column(Integer, ForeignKey("sandwiches.id"), primary_key=True)
+    sandwich_id = Column(Integer, ForeignKey("menu_items.id"), primary_key=True)  # Reference menu_items table
     ingredient_id = Column(Integer, ForeignKey("ingredients.id"), primary_key=True)
 
 
@@ -38,3 +38,4 @@ class Resource(Base):
     unit = Column(String(100), nullable=False)
 
     ingredient = relationship("Ingredient")
+

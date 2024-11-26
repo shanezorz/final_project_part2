@@ -4,11 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from .routers import index as indexRoute
 from .models import model_loader
 from .dependencies.config import conf
-from fastapi.staticfiles import StaticFiles
-
 
 app = FastAPI()
-
 origins = ["*"]
 
 app.add_middleware(

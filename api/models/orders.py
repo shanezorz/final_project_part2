@@ -1,14 +1,15 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL
+from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL, DATETIME
 from sqlalchemy.orm import relationship
 from ..dependencies.database import Base
+from datetime import datetime
 
 class Order(Base):
     __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    customer_name = Column(String(100))
-    order_date = Column(String, nullable=False)
-    description = Column(String(300))
+    customer_name = Column(String(100))  # Length specified
+    order_date = Column(DATETIME, nullable=False, default=datetime.utcnow)
+    description = Column(String(300))  # Length specified
 
     order_details = relationship("OrderDetail", back_populates="order")
 

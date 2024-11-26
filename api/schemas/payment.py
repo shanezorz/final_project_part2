@@ -21,8 +21,8 @@ class Payment(PaymentBase):
     id: int
     order_id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True
 
 class PromotionBase(BaseModel):
     promo_code: str
@@ -40,5 +40,5 @@ class PromotionUpdate(PromotionBase):
 class Promotion(PromotionBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True

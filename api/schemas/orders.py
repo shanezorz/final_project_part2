@@ -18,8 +18,8 @@ class OrderDetail(OrderDetailBase):
     id: int
     order_id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True
 
 class OrderBase(BaseModel):
     total_price: float
@@ -40,5 +40,5 @@ class Order(OrderBase):
     id: int
     customer_id: int
 
-    class Config:
-        orm_mode = True
+    class ConfigDict:
+        from_attributes = True
